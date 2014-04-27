@@ -75,7 +75,6 @@ Y_data[,1] = activities[Y_data[,1], 2]
 
 tidy_data <- cbind(subject_data, Y_data, X_data)
 
-
 ##
 # 5. Creates a second, independent tidy data set with the average of each variable for each activity and each subject.
 ##
