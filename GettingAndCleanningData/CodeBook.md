@@ -21,6 +21,8 @@ It is the result of merge `train/subject_train.txt` with `test/subject_test.txt`
 
 ## Extracting the measurements on the mean and standard deviation for each measurement
 
+First we read `features.txt` and we will get only 66 out of 561 attributes are measurements on the mean and standard deviation. 
+
 The result will give us:
 
 - tBodyAcc-mean()-X
@@ -90,3 +92,13 @@ The result will give us:
 - fBodyBodyGyroJerkMag-mean()
 - fBodyBodyGyroJerkMag-std()
 
+## Descriptive activity names
+
+We read `activity_labels.txt` merging with our Y_data. The labels are:
+
+- WALKING
+- WALKING_UPSTAIRS
+- WALKING_DOWNSTAIRS
+- SITTING
+- STANDING
+- LAYING
