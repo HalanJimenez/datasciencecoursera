@@ -1,25 +1,25 @@
-# CodeBook
+## CodeBook
 
-## Principal Fields
+### Principal Fields
 
 - Subjects: Subjects/Participants with an ID.
 - Activities: Activity performed by the subject.
 
-## Merging training and test sets to create one data set
+### Merging training and test sets to create one data set
 
-### X_data
+#### X_data
 
 It is the result of merge `train/X_train.txt` with `est/X_test.txt`. Containing the 541 columns of raw data.
 
-### Y_data
+#### Y_data
 
 It is the result of merge `train/Y_train.txt` with `test/Y_test.txt`. Containing the id of the activity.
 
-### subject_data
+#### subject_data
 
 It is the result of merge `train/subject_train.txt` with `test/subject_test.txt`. Containing the id of the subject.
 
-## Extracting the measurements on the mean and standard deviation for each measurement
+### Extracting the measurements on the mean and standard deviation for each measurement
 
 First we read `features.txt` and we will get only 66 out of 561 attributes are measurements on the mean and standard deviation. 
 
@@ -92,7 +92,7 @@ The result will give us:
 - fBodyBodyGyroJerkMag-mean()
 - fBodyBodyGyroJerkMag-std()
 
-## Descriptive activity names
+### Descriptive activity names
 
 We read `activity_labels.txt` merging with our Y_data. The labels are:
 
@@ -102,3 +102,9 @@ We read `activity_labels.txt` merging with our Y_data. The labels are:
 - SITTING
 - STANDING
 - LAYING
+
+### Creating a second, independent tidy data set with the average of each variable for each activity and each subject.
+
+- There are 30 subjects with 6 activities each one.
+- There are 66 attribues.
+- The first column contains subject IDs, the second column contains activity names and then all the attributes.
