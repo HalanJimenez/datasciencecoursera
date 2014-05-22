@@ -1,9 +1,11 @@
 ## 0.1 Load libraries
+
 library(plyr)
 library(ggplot2)
 library(datasets)
 
 ## 0.2 Unzip file and get data
+
 unzip('exdata-data-NEI_data.zip')
 NEI <- readRDS("summarySCC_PM25.rds")
 SCC <- readRDS("Source_Classification_Code.rds")
@@ -15,9 +17,10 @@ SCC <- readRDS("Source_Classification_Code.rds")
 ## answer this question.
 
 baltimore <- NEI[NEI$fips == "24510", ]
-baltimoreEmmissionByType <- ddply(baltimore, .(year, type), summarize, totalEmissions = sum(Emissions))
+baltimoreEmmissionByType <- ddply(baltimore, .(year, type), summarize, totalEmissions = as.numeric(format(round(sum(Emissions), 2), nsmall = 2)))
 png("plot3.png", width = 600, height = 480)
 qplot(year, totalEmissions, data = baltimoreEmmissionByType, color = type, geom = c("point", "line"),
       main = "Total emissions from PM2.5 in the Baltimore City, Maryland \n from 1999 to 2008 by type",
-      xlab = "Year", ylab = "Total Emissions (tons)")
+      xlab = "Year", ylab = "Total Emissions (tons)") +
+        geom_text(aes(label = baltimoreEmmissionByType$totalEmissions, y = baltimoreEmmissionByType$totalEmissions), size = 3)        
 dev.off()
