@@ -20,19 +20,3 @@ plot(emissions$year, emissions$totalEmissions, type = "b",
 axis(side = 1, at = emissions$year, las = 1)
 axis(side = 2, at = emissions$totalEmissions, las = 2)
 dev.off()
-
-## 4.0 Across the United States, how have emissions from coal combustion-related
-## sources changed from 1999-2008?
-
-
-
-## 5.0 How have emissions from motor vehicle sources changed from 1999-2008 in
-## Baltimore City?
-
-
-
-## 6.0 Compare emissions from motor vehicle sources in Baltimore City with
-## emissions from motor vehicle sources in Los Angeles County, California
-## (fips == "06037"). Which city has seen greater changes over time in motor
-## vehicle emissions?
-
