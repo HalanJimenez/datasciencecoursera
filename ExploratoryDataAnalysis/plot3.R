@@ -14,3 +14,10 @@ SCC <- readRDS("Source_Classification_Code.rds")
 ## emissions from 1999-2008? Use the ggplot2 plotting system to make a plot
 ## answer this question.
 
+baltimore <- NEI[NEI$fips == "24510", ]
+baltimoreEmmissionByType <- ddply(baltimore, .(year, type), summarize, totalEmissions = sum(Emissions))
+png("plot3.png", width = 600, height = 480)
+qplot(year, totalEmissions, data = baltimoreEmmissionByType, color = type, geom = c("point", "line"),
+      main = "Total emissions from PM2.5 in the Baltimore City, Maryland \n from 1999 to 2008 by type",
+      xlab = "Year", ylab = "Total Emissions (tons)")
+dev.off()
