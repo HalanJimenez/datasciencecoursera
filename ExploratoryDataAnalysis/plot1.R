@@ -12,21 +12,14 @@ SCC <- readRDS("Source_Classification_Code.rds")
 ## to 2008? Using the base plotting system, make a plot showing the total PM2.5
 ## emission from all sources for each of the years 1999, 2002, 2005, and 2008.
 
-
-
-## 2.0 Have total emissions from PM2.5 decreased in the Baltimore City, Maryland
-## (fips == "24510") from 1999 to 2008? Use the base plotting system to make a 
-## plot answering this question.
-
-
-
-## 3.0 Of the four types of sources indicated by the type (point, nonpoint, 
-## onroad, nonroad) variable, which of these four sources have seen decreases in
-## emissions from 1999-2008 for Baltimore City? Which have seen increases in
-## emissions from 1999-2008? Use the ggplot2 plotting system to make a plot
-## answer this question.
-
-
+emissions <- ddply(NEI, .(year), summarize, totalEmissions = as.numeric(format(round(sum(Emissions/1000000), 2), nsmall = 2)))
+png("plot1.png", width = 480, height = 480)
+plot(emissions$year, emissions$totalEmissions, type = "b",
+     main = "Total emissions from PM2.5 in the United States \n from 1999 to 2008",
+     xlab = "Year", ylab = "Total Emissions (millions of tons)", xaxt = "n", yaxt = "n")
+axis(side = 1, at = emissions$year, las = 1)
+axis(side = 2, at = emissions$totalEmissions, las = 2)
+dev.off()
 
 ## 4.0 Across the United States, how have emissions from coal combustion-related
 ## sources changed from 1999-2008?
